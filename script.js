@@ -11,8 +11,9 @@ function createGrid (boxNum) {
     for (i = 0; i < (boxNum*boxNum); i++) {
         const blocks = document.createElement('div');
         blocks.classList.add('grid-blocks');
-        blocks.addEventListener('mouseover', draw)
 
+        // Draw function
+        blocks.addEventListener('mouseover', draw);
         function draw (e) {
             if (e.type === 'mouseover' && !mouseDown) {
                 return;
@@ -20,6 +21,14 @@ function createGrid (boxNum) {
                 blocks.setAttribute('style', 'background-color: black');
             }
         }
+
+        // Show color when hovering
+        blocks.addEventListener('mouseenter', () => {
+            blocks.classList.add('black');
+        });
+        blocks.addEventListener('mouseleave', () => {
+            blocks.classList.remove('black');
+        });
 
         grid.appendChild(blocks);
     }
