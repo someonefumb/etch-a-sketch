@@ -1,5 +1,6 @@
 // Grid
 const grid = document.querySelector('.grid');
+let size = 16;
 
 // Colors
 let blackColor = true;
@@ -15,7 +16,7 @@ const monotoneBtn = document.querySelector('#monotoneBtn');
 const eraserBtn = document.querySelector('#eraserBtn');
 const resetBtn = document.querySelector('#resetBtn');
 
-const btns = document.querySelectorAll('button');
+const btns = document.querySelectorAll('button.colors');
 btns.forEach((button) => {
     button.addEventListener('click', () => {
         blackColor = false;
@@ -35,15 +36,32 @@ btns.forEach((button) => {
             case 'eraserBtn':
                 eraserColor = true;
                 break;
-            case 'gridSizeBtn':
-                console.log('works');
-                break;
-            case 'resetBtn':
-                console.log('works');
-                break;
         }
     });
 });
+
+// Sets grid size
+function gridSize() {
+    size = +prompt("Grid Size", '');
+    if (typeof size === 'number' && size <= 100 && size > 0) {
+        reset();
+    } else {
+        alert('ERROR');
+    }
+}
+
+// Reset
+function reset() {
+    removeAllChildNodes(grid);
+    createGrid(size);
+}
+
+// Removes all color
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
 
 // Tell if mouse is down
 let mouseDown = false;
@@ -85,4 +103,4 @@ function createGrid (boxNum) {
     grid.setAttribute('style', `grid-template-columns: repeat(${boxNum}, 1fr)`);
 }
 
-createGrid(16);
+createGrid(size);
