@@ -64,20 +64,20 @@ function createGrid (boxNum) {
             } else if (blackColor === true) {
                 blocks.setAttribute('style', 'background-color: black');
             } else if (rainbowColor === true) {
-                blocks.setAttribute('style', `background-color: ${''}`);
+                blocks.setAttribute('style', `background-color: ${'#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')}`);
             }  else if (monotoneColor === true) {
-                blocks.setAttribute('style', `background-color: ${''}`);
+                blocks.setAttribute('style', `background-color: black; opacity: ${(parseFloat(this.style.opacity) || 0) + 0.1}`);
             }  else if (eraserColor === true) {
                 blocks.setAttribute('style', 'background-color: white');
             } 
         }
 
-        // Show color when hovering
+        // Show when hovering
         blocks.addEventListener('mouseenter', () => {
-            blocks.classList.add('black');
+            blocks.classList.add('hovering');
         });
         blocks.addEventListener('mouseleave', () => {
-            blocks.classList.remove('black');
+            blocks.classList.remove('hovering');
         });
 
         grid.appendChild(blocks);
