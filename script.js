@@ -82,6 +82,9 @@ function createGrid (boxNum) {
             if (e.type === 'mouseover' && !mouseDown) {
                 return;
             } else {
+                if (monotoneColor === true) {
+                    blocks.setAttribute('style', `background-color: black; opacity: ${(parseFloat(this.style.opacity) || 0) + 0.1}`);
+                }
                 draw();
             }
         }
