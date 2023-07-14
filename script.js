@@ -75,11 +75,18 @@ function createGrid (boxNum) {
         blocks.classList.add('grid-blocks');
 
         // Draw function
-        blocks.addEventListener('mouseover', draw);
-        function draw (e) {
+        blocks.addEventListener('mouseover', drag);
+        blocks.addEventListener('click', draw);
+
+        function drag(e) {
             if (e.type === 'mouseover' && !mouseDown) {
                 return;
-            } else if (blackColor === true) {
+            } else {
+                draw();
+            }
+        }
+        function draw() {
+            if (blackColor === true) {
                 blocks.setAttribute('style', 'background-color: black');
             } else if (rainbowColor === true) {
                 blocks.setAttribute('style', `background-color: ${'#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')}`);
