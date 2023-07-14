@@ -1,3 +1,7 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .grid {
     display: grid;
     height: 500px;
@@ -7,4 +11,28 @@
 
 .hovering {
     background-color: powderblue;
+}
+
+header {
+    font-size: 100px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+button {
+    font-family: inherit;
+    width: 75px;
+    height: 40px;
 }
